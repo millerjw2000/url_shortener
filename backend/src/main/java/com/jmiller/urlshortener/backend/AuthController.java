@@ -31,6 +31,8 @@ public class AuthController {
 
     @PostMapping("/auth/register")
     public void register(@RequestBody AuthRequest request) {
+
+        System.out.println("register hit");
         String hashedPassword = passwordEncoder.encode(request.getPassword());
         
         if (userRepository.containsUser(request.getUsername())) {
