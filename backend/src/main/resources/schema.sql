@@ -10,6 +10,7 @@ CREATE table if NOT EXISTS urls (
     
     id INTEGER PRIMARY KEY,
     code VARCHAR(255) NOT NULL,
-    fullLink VARCHAR(255) NOT NULL
+    fullLink VARCHAR(255) NOT NULL,
+    userId VARCHAR(255) NOT NULL
 
 );

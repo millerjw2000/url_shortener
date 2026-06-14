@@ -25,7 +25,7 @@ public class AuthController {
 
     @GetMapping("/auth/test")
     public String test(){
-        System.out.println("tedsdadsa");
+        System.out.println("Test route");
         return "test";
     }
 

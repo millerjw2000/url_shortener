@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Contoller {
     
 
-    @PostMapping("/test/test")
+    @PostMapping("/enter/")
     public String test() {
         return "dsadasdsadsadsa";
     }
