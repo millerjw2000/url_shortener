@@ -8,8 +8,8 @@ CREATE table if NOT EXISTS users (
 
 CREATE table if NOT EXISTS urls (
     
-    id INTEGER PRIMARY KEY,
-    code VARCHAR(255) NOT NULL,
+    id VARCHAR(25) PRIMARY KEY,
+    code VARCHAR(10) NOT NULL,
     fullLink VARCHAR(255) NOT NULL,
     userId VARCHAR(255) NOT NULL
 

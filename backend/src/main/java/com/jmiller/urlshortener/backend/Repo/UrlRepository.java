@@ -70,4 +70,10 @@ public class UrlRepository {
         template.update(query,id);
     }
 
+    public Boolean containsCode(String code) {
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE code = ?";
+        Integer count = template.queryForObject(query,Integer.class,code);
+        return count > 0;
+    }
+
 }
