@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.jmiller.urlshortener.backend.Repo.*;
 
@@ -16,23 +17,24 @@ public class AuthController {
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private JwtService jwtService;
+    private UrlRepository urlRepository;
 
-    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, UrlRepository urlRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
+        this.urlRepository = urlRepository;
     }
 
     @GetMapping("/auth/test")
     public String test(){
-        System.out.println("Test route");
+        System.out.println("Test route reached");
         return "test";
     }
 
     @PostMapping("/auth/register")
     public void register(@RequestBody AuthRequest request) {
 
-        System.out.println("register hit");
         String hashedPassword = passwordEncoder.encode(request.getPassword());
         
         if (userRepository.containsUser(request.getUsername())) {
@@ -68,6 +70,12 @@ public class AuthController {
     @GetMapping("/healthCheck")
     public String healthCheck() {
         return "OK";
+    }
+
+    @GetMapping("/url/{code}")
+    public String getFullLink(@PathVariable String code) {
+        String fullLink = urlRepository.getFullLink(code);
+        return fullLink;
     }
 
 }
