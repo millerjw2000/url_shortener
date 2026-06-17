@@ -1,0 +1,10 @@
+import { LoginForm } from '../components/LoginForm'
+
+export function Home() {
+    return (
+        <>
+            Home page!
+            <LoginForm/>
+        </>
+    )
+}
