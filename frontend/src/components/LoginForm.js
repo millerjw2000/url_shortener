@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 
 export function LoginForm() {
 
@@ -14,10 +15,42 @@ export function LoginForm() {
     const handleSubmit = async (e) => {
         
         e.preventDefault()
+        setMessage('fart')
 
-        setMessage('logged in!')
-        setUsername('')
-        setPassword('')
+        for (let i=0; i < password.length; i++) {
+            if (password[i] === ' ') {
+                setErrorMessage('Password cannot contain spaces')
+                return null
+            }
+        }
+
+        for (let i=0; i < username.length; i++) {
+            if (username[i] === ' ') {
+                setErrorMessage('Username cannot contain spaces')
+                return null
+            }
+        }
+
+        const res = await axios.post(`http://localhost:8080/auth/login`, 
+            {
+                username: username,
+                password: password
+            }
+        ).then(res=> {
+
+            if (res.status == 200) {
+                setUsername('')
+                setPassword('')
+                setErrorMessage('Login success!')
+                localStorage.setItem('token',res.data.token)
+                navigate('/user')
+            }
+        }).catch(err=> {
+
+            if (err.response) {
+                setErrorMessage('Invalid login credentials')
+            }
+        })    
     
     }
 
@@ -31,7 +64,7 @@ export function LoginForm() {
 
     return (
         <>
-            <div className='login_form'>
+            <div className='form'>
                 <h1>Login : {message}</h1>
                 <form onSubmit={handleSubmit}>
                     <input type='text' value={username} placeholder='username' required onChange={handleUsernameChange}/>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.jmiller.urlshortener.backend.Repo.*;
 
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class AuthController {
 
@@ -32,7 +33,7 @@ public class AuthController {
         return "test";
     }
 
-    @PostMapping("/auth/register")
+    @PostMapping("/auth/register") // need to return something 
     public void register(@RequestBody AuthRequest request) {
 
         String hashedPassword = passwordEncoder.encode(request.getPassword());
@@ -72,7 +73,7 @@ public class AuthController {
         return "OK";
     }
 
-    @GetMapping("/url/{code}")
+    @GetMapping("/url/{code}") // need to check if url exists
     public String getFullLink(@PathVariable String code) {
         String fullLink = urlRepository.getFullLink(code);
         return fullLink;

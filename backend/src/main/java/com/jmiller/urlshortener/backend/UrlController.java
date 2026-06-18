@@ -2,17 +2,20 @@ package com.jmiller.urlshortener.backend;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jmiller.urlshortener.backend.Repo.UrlRepository;
 import com.jmiller.urlshortener.backend.Model.Url;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class UrlController {
     
@@ -22,9 +25,10 @@ public class UrlController {
         this.urlRepository = urlRepository;
     }
 
-    @PostMapping("/enter/url={url}") // this is ugly
-    public ArrayList<Url> enterUrl(@PathVariable String url, Authentication auth) {
+    @PostMapping("/enter") // need to validate links
+    public ArrayList<Url> enterUrl(@RequestBody EnterRequest request, Authentication auth) {
         
+        String url = request.getFullLink();
         String id = GenerateId.generate(25);
         String userId = (String) auth.getPrincipal();
 
