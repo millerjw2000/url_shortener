@@ -11,8 +11,6 @@ import com.jmiller.urlshortener.backend.Model.Url;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.ArrayList;
 
 @CrossOrigin(origins = {"http://localhost:3000"})
@@ -45,7 +43,7 @@ public class UrlController {
 
         urlRepository.enter(u);
 
-        System.out.println("Url successfully saved. (" + u + " | " + code + ")");
+        System.out.println("Url successfully saved. (" + u.getFullLink() + " | " + code + ")");
 
         return urlRepository.getAll(userId);
 
@@ -57,10 +55,11 @@ public class UrlController {
         return urlRepository.getAll(userId);
     }
 
-    @DeleteMapping("/delete/id={id}")
-    public ArrayList<Url> delete(@PathVariable String id, Authentication auth) {
-        urlRepository.delete(id);
+    @DeleteMapping("/delete")
+    public ArrayList<Url> delete(@RequestBody DeleteRequest request, Authentication auth) {
+        urlRepository.delete(request.getId());
         String userId = (String) auth.getPrincipal();
+        System.out.println("Deleting url (" + request.getId() + ")");
         return urlRepository.getAll(userId);
     }
 

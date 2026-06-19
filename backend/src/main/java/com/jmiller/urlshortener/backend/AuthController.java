@@ -73,7 +73,7 @@ public class AuthController {
         return "OK";
     }
 
-    @GetMapping("/url/{code}") // need to check if url exists
+    @GetMapping("/go/{code}") // need to check if url exists
     public String getFullLink(@PathVariable String code) {
         String fullLink = urlRepository.getFullLink(code);
         return fullLink;
