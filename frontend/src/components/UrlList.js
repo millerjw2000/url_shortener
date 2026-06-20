@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
 import axios from "axios"
+import "./urllist.css"
 
 export function UrlList({ urls, setUrls }) {
 
@@ -33,8 +34,13 @@ export function UrlList({ urls, setUrls }) {
 
     return (
         <div className='url_list'>
+            <h1>Your URLs</h1>
             {urls.map((url,idx)=>(
-                <li key={url.id}>{url.fullLink} <a href={`http://localhost:3000/go/${url.code}`}>http://localhost:3000/go/{url.code}</a><button onClick={(e)=>handleSubmit(url.id,e)}>delete</button></li>
+                <tr key={url.id}>
+                    <td className='full_link'><a href={url.fullLink}>{url.fullLink}</a></td>
+                    <td className='short_link'><a href={`http://localhost:3000/go/${url.code}`}>http://localhost:3000/go/{url.code}</a></td>
+                    <td className='delete'><button onClick={(e)=>handleSubmit(url.id,e)}>delete</button></td>
+                </tr>
             ))}
             {errorMessage}
         </div>

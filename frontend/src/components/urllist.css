@@ -1,0 +1,32 @@
+.url_list{
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem;
+}
+
+.url_list h1 {
+    margin: 0;
+    margin-bottom: .5rem;
+}
+
+
+
+.url_list tr {
+    
+}
+
+.full_link {
+    max-width: 10rem;
+    overflow: hidden;
+    text-align: left;
+}
+
+.short_link {
+    width: 20rem;
+}
+
+.delete {
+    width: 2rem;
+    text-align: right;
+}

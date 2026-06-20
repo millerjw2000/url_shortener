@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
+import './form.css'
 
 export function LoginForm() {
 
     const navigate = useNavigate()
-
-    const [message,setMessage] = useState('not logged in!')
 
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
@@ -15,7 +14,6 @@ export function LoginForm() {
     const handleSubmit = async (e) => {
         
         e.preventDefault()
-        setMessage('fart')
 
         for (let i=0; i < password.length; i++) {
             if (password[i] === ' ') {
@@ -65,14 +63,14 @@ export function LoginForm() {
     return (
         <>
             <div className='form'>
-                <h1>Login : {message}</h1>
+                <h1>Login</h1>
                 <form onSubmit={handleSubmit}>
                     <input type='text' value={username} placeholder='username' required onChange={handleUsernameChange}/>
                     <input type='text' value={password} placeholder='password' required onChange={handlePasswordChange}/>
-                    <input type='submit' value='login'/>
+                    <input className='submit' type='submit' value='Login'/>
                 </form>
                 <Link to={'/register'}>Register here</Link>
-                {errorMessage}
+                <span>{errorMessage}</span>
             </div>
         </>
     )
