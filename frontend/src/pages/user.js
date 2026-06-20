@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom"
 import { Logout } from "../components/Logout"
 import { NewUrlForm } from "../components/NewUrlForm"
 import { UrlList } from "../components/UrlList"
+import './user.css'
 
 export function User() {
 
@@ -37,12 +38,11 @@ export function User() {
     return (
         <>
             {(loggedIn) ? (
-                <>
-                    you are logged in
+                <div className='user'>
                     <UrlList urls={urls} setUrls={setUrls}/>
                     <NewUrlForm urls={urls} setUrls={setUrls}/>
                     <Logout/>
-                </>
+                </div>
             ) : (
                 <>
                     You are not logged in!

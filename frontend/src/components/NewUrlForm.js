@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import axios from "axios"
 import './newurl.css'
+import { GrAdd } from 'react-icons/gr'
 
 export function NewUrlForm({ urls, setUrls }) {
 
@@ -46,9 +47,10 @@ export function NewUrlForm({ urls, setUrls }) {
 
     return (
         <div className='new_url_form'>
+            <h1>Add a url</h1>
             <form onSubmit={handleSubmit}>
                 <input type='url' value={urlText} placeholder='enter a url' required onChange={handleUrlTextChange}/>
-                <input type='submit' value='-'/>
+                <button type='submit'><GrAdd className='icon' type='submit'/></button>
             </form>
             {errorMessage}
         </div>

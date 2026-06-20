@@ -1,5 +1,32 @@
 .new_url_form {
-    background-color: red;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--tertiary-color);
     text-align: center;
     margin: 1rem;
+    padding: .5rem;
+    width: 15rem;
 }
+
+.new_url_form form {
+    width: 100%;
+}
+
+.new_url_form input {
+    margin: .25rem;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: rgb(197, 197, 197);
+}
+
+.new_url_form button[type='submit']{
+    background:none;
+    border:none;
+}
+
+.new_url_form h1{
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+

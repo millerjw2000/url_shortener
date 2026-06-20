@@ -3,6 +3,7 @@
     padding: 1rem;
     text-align: center;
     margin: 1rem;
+    border: 1px solid var(--tertiary-color);
 }
 
 .url_list h1 {
@@ -10,23 +11,41 @@
     margin-bottom: .5rem;
 }
 
+.url_list td {
+    padding: .5rem;
+}
 
+.url_list table,th{
+    border-collapse: collapse;
+    background-color: var(--primary-color);
+}
 
-.url_list tr {
-    
+.url_list {
+    border: 1px solid var(--tertiary-color);
 }
 
 .full_link {
-    max-width: 10rem;
+    max-width: 20rem;
     overflow: hidden;
+    text-align: left;
+    white-space: nowrap;
     text-align: left;
 }
 
 .short_link {
-    width: 20rem;
+    width: 30rem;
 }
 
 .delete {
     width: 2rem;
     text-align: right;
+    display: flex;
+    justify-content: center;
+    padding: .25rem;
+
 }
+
+.url_list tr:nth-child(odd) {
+  background-color: var(--secondary-color);
+}
+
