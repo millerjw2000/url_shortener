@@ -36,6 +36,10 @@ export function UrlList({ urls, setUrls }) {
     return (
         <div className='url_list'>
             <h1>Your URLs</h1>
+            {(urls.length === 0 ? (
+            <>
+            No URLs to display
+            </>) : (
             <table>
                 <thead>
                     <tr>
@@ -55,6 +59,9 @@ export function UrlList({ urls, setUrls }) {
                 </tbody>
                 
             </table>
+            ))
+            }
+            
             {errorMessage}
         </div>
     )
