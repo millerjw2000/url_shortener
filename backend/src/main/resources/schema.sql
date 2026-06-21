@@ -9,7 +9,7 @@ CREATE table if NOT EXISTS users (
 CREATE table if NOT EXISTS urls (
     
     id VARCHAR(25) PRIMARY KEY,
-    code VARCHAR(10) NOT NULL,
+    code VARCHAR(5) NOT NULL,
     fullLink VARCHAR(255) NOT NULL,
     userId VARCHAR(255) NOT NULL
 

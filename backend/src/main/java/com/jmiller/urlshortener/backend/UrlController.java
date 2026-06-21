@@ -35,9 +35,9 @@ public class UrlController {
         u.setFullLink(url);
         u.setUserId(userId);
 
-        String code = GenerateId.generate(10);
+        String code = GenerateId.generate(5);
         while (urlRepository.containsCode(code)) {
-            code = GenerateId.generate(10);
+            code = GenerateId.generate(5);
         }
         u.setCode(code);
 
