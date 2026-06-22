@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
+import './go.css'
 
 export function Go() {
 
@@ -19,8 +20,8 @@ export function Go() {
     },[code])
 
     return (
-        <>
-            {outputMessage}
-        </>
+        <div className='go'>
+            <h1>{outputMessage}</h1>
+        </div>
     )
 }
